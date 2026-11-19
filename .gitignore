@@ -1,4 +1,5 @@
 # local build outputs — the entry image itself (entry.png) IS committed
+# v3: build outputs live in out/ (never committed)
 out/
 __pycache__/
 *.pyc

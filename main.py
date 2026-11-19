@@ -1,4 +1,4 @@
-"""news-image-20261119 entry v2 (Python 3.13).
+"""news-image-20261119 entry v3 (Python 3.13).
 
 The entry image is a single newspaper front page summing up the world's
 news of Thursday 19 November 2026 in 37 stories. At runtime this program
@@ -7,7 +7,11 @@ timestamps in the output: two runs produce identical bytes.
 
 Composition (see build_entry.py, same code this program imports) — rebuilt
 from a study of the live top 10 (win rates 99.23%-99.03%), which all do
-the same things, so v2 does them too:
+the same things, so v2 did them too, and v3 densifies them: v2 scored
+98.01% provisional (11W-1L) against a top-20 line of ~98.9%, so v3 adds
+richer hero scenes, taller mid-card illustration bands with bigger
+icons, a HOW SURE ARE WE? confidence legend and a THE DAY IN UTC
+mini-timeline under the map:
 - Three hero panels in a row (Shenzhen summit, GTA VI, Anthropic IPO),
   each a FLAT DRAWN illustration with a big label — the top 10 use no
   photographs at all. The small flat icons for the 10 mid cards are

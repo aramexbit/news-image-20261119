@@ -27,12 +27,15 @@ sources. The design follows the live top 10 of this bounty (win rates
 99.23%–99.03%), which all use the same pattern: three drawn heroes, a
 numbers strip, region counts, per-story sources and a DATE CHECK box
 listing stories left out because they were first reported on other days.
-Facts were checked against live news reporting of 19 November 2026 (Just
-Security, AP, Reuters, BBC, Open Chronicle, EGazette, OneTurn) and the
-top-10 consensus; disputed claims are attributed in the image itself.
-Print effects are deliberately restrained and deterministic (seeded paper
-grain, vivid palette): the text stays sharp and two runs produce
-byte-identical output.
+v3 densifies the pattern after v2 scored 98.01% provisional (top 20
+needs ~98.9%): richer hero scenes, taller mid-card illustration bands,
+a HOW SURE ARE WE? legend (REPORTED / CLAIM / FORECAST) and a THE DAY
+IN UTC timeline under the map. Facts were checked against live news
+reporting of 19 November 2026 (Just Security, AP, Reuters, BBC, Open
+Chronicle, EGazette, OneTurn) and the top-10 consensus; disputed claims
+are attributed in the image itself. Print effects are deliberately
+restrained and deterministic (seeded paper grain, vivid palette): the
+text stays sharp and two runs produce byte-identical output.
 
 ## Run it
 
