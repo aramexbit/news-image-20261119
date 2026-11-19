@@ -160,6 +160,20 @@
   submitting is one daily quota entry, upside is a real shot at top
   20. Submit directly after bundle + kit check pass (quota: 2 left
   today before v3, reset 07:00 WIB).
+- SUBMIT v3 ACCEPTED 20 Nov 06:14 WIB (HTTP 202): submission
+  01a1f616-dbdc-75cd-b52a-5533cba201fb, claim code
+  AF-2HXCH-AVQTQ-EVEG2-DKKEX, commit
+  05527ef3073dde72574802dd657de665698ed842, server time
+  2026-11-19T23:14:15.627Z. Bundle v3:
+  ~/workspace/makefun/news-image-20261119-bundle-v3.tar.gz,
+  2.881.518 bytes, sha256
+  8e03cd734025c791b4e833a1f4ee80db3f50dba2afd4b9b2c0fd06e16b12e0d2
+  (19 sessions, 1,177 messages; usage from muse.db, 40 rows attached).
+  Kit check with bundle: 13 passed, 0 failed, 5 skipped — authored
+  63.0% (641/1,016 lines), unwritten 0.4%, build_entry.py final
+  content from 14 write/edit messages. Verified via API right after
+  submit: status "submitting", repo_url + title correct. v3 REPLACES
+  v2 as the final entry; result due ~4 Dec 2026.
 - Honest gaps v2: heroes are flat cartoon-style drawings (same style
   as the top 10 — that is the point); mid-card icons are small;
   Shenzhen figures are generic (labelled TRUMP/XI/PUTIN, no likeness
