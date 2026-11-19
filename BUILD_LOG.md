@@ -120,6 +120,46 @@
 - Entries close 21 Nov 07:00 WIB; result due ~4 Dec 2026 (same family
   as 20261117/20261118). This is the FINAL entry unless the user asks
   for a v3 (a new submit would replace it).
+
+## v3 (20 Nov 2026 ~06:03–06:15 WIB) — densify for top 20
+
+- v2 provisional judge result (checked 06:00 WIB): win rate 98.01%
+  (11W-1L, 12 matches, interval 97.25–98.77%), artifact sha256 matches
+  v2 entry.png. Top rank ~99.23%, top 20 line ~98.9%, top 50 line
+  ~98.85% — v2 earns $0 as it stands (below top 50 too).
+- User order 06:03 WIB: "Ya, buat v3 untuk kejar top 20" (build it);
+  06:05 WIB: "kalau sudah jadi dan yakin top 20 langsung submit"
+  (submit directly when done and confident of top 20).
+- v3 changes (same 37 stories, same facts, same layout grid):
+  * Heroes densified: Shenzhen gains chandeliers, two background
+    delegates and documents on the table; GTA VI gains stars, birds, a
+    back-row skyline, a neon VICE CITY sign and cars with headlights;
+    Anthropic gains grid lines, a $80/$60 price axis, volume bars and
+    a ticker tape (first trade $111.50, +34% on $83, $81.3bn raised).
+  * Mid-card illustration band 30 -> 32 px, icons 28 -> 30 px; deck
+    kept at 3 lines so per-story sources survive (a 2-line cap cut
+    the source on the longest decks — caught on zoomed crop, fixed).
+  * HOW SURE ARE WE? legend (REPORTED / CLAIM / FORECAST, drawn
+    dots) + THE DAY IN UTC mini-timeline (01:42 Riyadh sirens, 04:05
+    Suneung listening test, 14:30 ANT first trade) in the dead space
+    under the map.
+  * Fixes caught on zoomed crops: ticker tape overflowed the hero
+    panel (shortened); timeline's last line touched the DATE CHECK
+    border (leading 11 -> 10).
+- Verification v3:
+  * build_entry.py 2x -> identical sha256
+    4c6c7ad2cf8d7f8916757ba6ffd6a983d60019d1fce99993e5bb8c8a226b7761
+  * main.py 2x (MAKEFUN_OUTPUT_DIR) -> identical sha256 (same)
+  * entry.png 1024x1024, 239,499 bytes (<= 1 MiB)
+  * Visual check: full image + 3 zoomed crops read by builder; all
+    three heroes denser and legible, ticker fits, full decks with
+    sources, legend + timeline clear of the DATE CHECK box.
+- Repo commit 05527ef3073dde72574802dd657de665698ed842.
+- Submit decision (user's rule): v3 is clearly stronger than v2 on
+  every axis the top 10 share, and v2 earns $0 — downside of
+  submitting is one daily quota entry, upside is a real shot at top
+  20. Submit directly after bundle + kit check pass (quota: 2 left
+  today before v3, reset 07:00 WIB).
 - Honest gaps v2: heroes are flat cartoon-style drawings (same style
   as the top 10 — that is the point); mid-card icons are small;
   Shenzhen figures are generic (labelled TRUMP/XI/PUTIN, no likeness
