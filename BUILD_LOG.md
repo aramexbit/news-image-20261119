@@ -45,3 +45,55 @@
   flags among the four (illustration inaccuracy); featured-story icons
   are small flat drawings by design. No local grade exists for this
   competition (server grades).
+
+## v2 (20 Nov 2026 ~05:41–06:00 WIB) — FULL REBUILD from live top-10 study
+
+- User order: "pelajari top rank, setelah paham cara kerjanya buat, lalu
+  kirim hasilnya dulu ke sini" — study the top rank, rebuild that way,
+  show the result here first. No submit yet.
+- Top-10 images downloaded via GET /api/submissions/<id>/artifact.webp
+  (ranks 1-10, win rates 99.23%-99.03%; 10,467 ranked entries total;
+  rank 50 = 98.84%, rank 100 = 98.70%). What all 10 do:
+  * THREE hero panels in a row (Shenzhen, GTA VI, Anthropic IPO — the
+    judge's consistent top-3 order), each a FLAT DRAWN illustration
+    with a big label. 0 of 10 use photographs.
+  * A numbers strip under the masthead ($81.3bn, 15.9m, 551,864,
+    200,000, 109-0, 3 presidents) and region tabs with story counts.
+  * A red-italic subhead under the date summarising the top 3 stories.
+  * Per-story source attribution on every card.
+  * A DATE CHECK box listing stories deliberately left out because
+    they were first reported on other days.
+  * 31-45 stories (median ~35); "THE DAY BY HOURS" timeline in 4 of 10.
+- v2 changes vs v1: photos DROPPED (hero .jpg files removed from repo);
+  all heroes + icons drawn in code; 3 heroes instead of 2; Kerch
+  demoted from hero to mid card (the judge never puts it top-3);
+  numbers strip + region tabs + subhead + DATE CHECK added; story
+  count 30 -> 37 (3 heroes + 10 mid cards + 24 briefs); per-story
+  sources added. New stories from top-10 consensus, cross-checked
+  against live news: Suneung 551,864, Akvan 200,000 evacuated,
+  Australia jobless 4.9%, Colombia national strike, Denmark 109-0,
+  Florida floods, Van Gogh/Nvidia/Jeffries/Voyager as DATE CHECK
+  exclusions (first reported 18 Nov).
+- Revisions in-session: v2 render -> fixed GTA VI sun/VI-badge
+  collision (sun moved left) and Anthropic $83/trend-line collision
+  (chart lowered). Map dots re-spread for 13 numbered stories.
+- Verification v2:
+  * build_entry.py 2x -> identical sha256
+    f5d7185b1718f39241ac8d50547d6403abc0483664ad5d8b71973e193b02ba70
+  * main.py 2x (MAKEFUN_OUTPUT_DIR) -> identical sha256 (same as
+    above, compose path)
+  * entry.png 1024x1024, 230,893 bytes (<= 1 MiB)
+  * Visual check: full image read by builder; all three drawn heroes
+    legible with labels, numbers strip + tabs clean, map dots spread,
+    DATE CHECK box 2 lines, no clipping/overlap.
+- Repo: https://github.com/aramexbit/news-image-20261119, commit
+  3830452 (v2 + cleanup: top-rank study images and media sidecars
+  removed from the repo — reference only, never part of the entry).
+- NOT submitted yet. Remaining submit-time steps: user approval of v2
+  in this chat, quota check (daily/total/can_submit), fresh kit
+  download + kit checks, bundle transcripts (SEPARATE agent from this
+  builder session), submit, record claim code.
+- Honest gaps v2: heroes are flat cartoon-style drawings (same style
+  as the top 10 — that is the point); mid-card icons are small;
+  Shenzhen figures are generic (labelled TRUMP/XI/PUTIN, no likeness
+  attempted). No local grade exists (server grades).
