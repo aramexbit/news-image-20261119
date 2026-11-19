@@ -1,0 +1,4 @@
+# local build outputs — the entry image itself (entry.png) IS committed
+out/
+__pycache__/
+*.pyc
