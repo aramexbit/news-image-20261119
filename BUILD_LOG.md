@@ -93,6 +93,33 @@
   in this chat, quota check (daily/total/can_submit), fresh kit
   download + kit checks, bundle transcripts (SEPARATE agent from this
   builder session), submit, record claim code.
+
+## SUBMITTED — v2 (20 Nov 2026 05:57 WIB)
+
+- User approved v2 in chat ("Setuju, submit v2 ini").
+- Quota before submit (GET /api/competitions/news-image-20261119/quota):
+  can_submit true, day cap 3 / taken 0 / left 3 (reset 2026-11-20T00:00Z),
+  hard limit 20 / left 20, entries_made 0.
+- Fresh kit check: kit.json bundle_sha256 1c4dd40e... identical to the
+  kit on disk (current); tarball download via api.mjs was text-corrupted
+  (binary through res.text()) — not needed, manifest match was enough.
+- Bundle (SEPARATE agent 08d33fa5): news-image-20261119-bundle-v2.tar.gz,
+  2,432,814 bytes, sha256 758fcdbd..., 18 muse-app sessions, 906 messages.
+  Kit check WITH bundle: **13 passed, 0 failed, 5 skipped** — authored
+  58.9% (>=30%), unwritten 0.4% (<=40%), build_entry.py final content
+  from 8 write/edit messages (>=2).
+- Submit (kit CLI, from inside the kit dir): accepted HTTP 202.
+  **Submission 01a1f607-98aa-7372-a35f-a86601b519de, claim code
+  AF-R613E-573MV-6SBJP-Z4SFP**, title "The World in One Day — 19
+  November 2026", commit 69aa571bc103791306309bcc088bc075a5698db4,
+  server time 2026-11-19T22:57:35.396Z. Verified via API: status
+  "submitting", repo_url + title correct.
+- Note: CLI warned "this kit copy is level 20 and https://make.fun is
+  at level 27" — submit still accepted (202); prizes are not escrowed
+  for this competition, so the entry went unsigned (--keypair not needed).
+- Entries close 21 Nov 07:00 WIB; result due ~4 Dec 2026 (same family
+  as 20261117/20261118). This is the FINAL entry unless the user asks
+  for a v3 (a new submit would replace it).
 - Honest gaps v2: heroes are flat cartoon-style drawings (same style
   as the top 10 — that is the point); mid-card icons are small;
   Shenzhen figures are generic (labelled TRUMP/XI/PUTIN, no likeness
