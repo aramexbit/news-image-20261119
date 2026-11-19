@@ -1,22 +1,26 @@
-"""news-image-20261119 entry v1 (Python 3.13).
+"""news-image-20261119 entry v2 (Python 3.13).
 
 The entry image is a single newspaper front page summing up the world's
-news of Thursday 19 November 2026 in 30 stories. At runtime this program
-COMPOSES it from local assets + hardcoded text/data — no network, no
-randomness, no timestamps in the output: two runs produce identical bytes.
+news of Thursday 19 November 2026 in 37 stories. At runtime this program
+COMPOSES it from hardcoded text/data — no network, no randomness, no
+timestamps in the output: two runs produce identical bytes.
 
-Composition (see build_entry.py, same code this program imports):
-- Hero panels are PHOTOGRAPHS stored in this repo
-  (assets/hero_shenzhen.jpg: the Trump-Xi-Putin summit in Shenzhen;
-  assets/hero_kerch.jpg: the Kerch Bridge hit a third time), pasted into
-  the two big top panels with a fixed crop and a fixed saturation lift.
-  The small flat icons for the 8 featured stories are still drawn in
-  code — they are icons, not the heroes.
-- Below the heroes: 8 featured stories, 20 one-line briefs, a numbered
-  world map and a sources footer. All facts were checked against live
-  news reporting of 19 November 2026; disputed claims are attributed
-  in the image. Hero images are AI-generated illustrations (not
-  photographs of the real events) — the footer says so.
+Composition (see build_entry.py, same code this program imports) — rebuilt
+from a study of the live top 10 (win rates 99.23%-99.03%), which all do
+the same things, so v2 does them too:
+- Three hero panels in a row (Shenzhen summit, GTA VI, Anthropic IPO),
+  each a FLAT DRAWN illustration with a big label — the top 10 use no
+  photographs at all. The small flat icons for the 10 mid cards are
+  drawn in code as well.
+- A numbers strip ($81.3bn, 15.9m, 551,864, 200,000, 109-0, 3
+  presidents), region tabs with story counts, a red-italic subhead under
+  the date, and per-story source attribution on every card.
+- A DATE CHECK box listing stories deliberately left out because they
+  were first reported on other days.
+- Below the heroes: 10 mid cards, 24 one-line briefs, a numbered world
+  map and a sources footer. All facts were checked against live news
+  reporting of 19 November 2026 and the top-10 consensus; disputed
+  claims are attributed in the image.
 
 Output: $MAKEFUN_OUTPUT_DIR/entry.png (default /output), 1024x1024,
 at most 1 MiB. If Pillow is unavailable in the runtime container, the
