@@ -388,6 +388,21 @@ NOT submitted
   submits for news-image-20261119). Entries close 21 Nov 07:00
   WIB anyway, so v5 is the FINAL entry and replaces v3.
   Result due ~4 Dec 2026.
+
+## Provisional rank check (21 Nov 2026 01:04 WIB)
+
+- v5: rank 834 of 17,226 ranked, judge 98.29% (12W-0L, 12
+  matches, interval 97.60–98.98%), artifact_sha256 f81716b5…
+  (confirmed ours). Top 50 line: 98.95% (rank 50 iblisbaik);
+  rank 1 hazel-harbor-63 99.23%; rank 10 99.15%; rank 20 99.08%.
+- v5 is OUTSIDE the paid top 50 provisionally (gap 0.66 pts).
+  Its judge score is IDENTICAL to v3's (98.29%, 12-0) — the
+  visual fixes did not move the provisional score; rank 776
+  (v3, 22:18) -> 834 (v5) is field growth + noise at a saturated
+  band. v3 no longer appears on the leaderboard (replaced).
+- Still PROVISIONAL (dev phase); the final heat after close
+  (21 Nov 07:00 WIB) re-judges every entry afresh. Final result
+  due ~4 Dec 2026.
 - Honest gaps v2: heroes are flat cartoon-style drawings (same style
   as the top 10 — that is the point); mid-card icons are small;
   Shenzhen figures are generic (labelled TRUMP/XI/PUTIN, no likeness
