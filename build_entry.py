@@ -437,21 +437,28 @@ def _figure(draw, cx, base_y, s, skin, hair, suit, tie):
     draw.pieslice([cx - s * 0.16, base_y - s * 0.64, cx + s * 0.16, base_y - s * 0.34],
                   180, 360, fill=hair)
     _fc = (40, 30, 25)
-    # eyebrows
-    draw.line([cx - s * 0.10, base_y - s * 0.55, cx - s * 0.03, base_y - s * 0.55],
-              fill=_fc, width=2)
-    draw.line([cx + s * 0.03, base_y - s * 0.55, cx + s * 0.10, base_y - s * 0.55],
-              fill=_fc, width=2)
-    # eyes
-    draw.ellipse([cx - s * 0.085, base_y - s * 0.52, cx - s * 0.045,
-                  base_y - s * 0.48], fill=_fc)
-    draw.ellipse([cx + s * 0.045, base_y - s * 0.52, cx + s * 0.085,
-                  base_y - s * 0.48], fill=_fc)
-    # nose
-    draw.line([cx, base_y - s * 0.50, cx, base_y - s * 0.42], fill=_fc, width=2)
-    # mouth
-    draw.line([cx - s * 0.05, base_y - s * 0.36, cx + s * 0.05,
-               base_y - s * 0.36], fill=_fc, width=2)
+    # ears
+    draw.ellipse([cx - s * 0.19, base_y - s * 0.49, cx - s * 0.13,
+                  base_y - s * 0.43], fill=skin)
+    draw.ellipse([cx + s * 0.13, base_y - s * 0.49, cx + s * 0.19,
+                  base_y - s * 0.43], fill=skin)
+    # eyebrows (thicker and longer, so they read at full-page scale)
+    draw.line([cx - s * 0.11, base_y - s * 0.56, cx - s * 0.02, base_y - s * 0.56],
+              fill=_fc, width=3)
+    draw.line([cx + s * 0.02, base_y - s * 0.56, cx + s * 0.11, base_y - s * 0.56],
+              fill=_fc, width=3)
+    # eyes (bigger dark dots)
+    draw.ellipse([cx - s * 0.10, base_y - s * 0.535, cx - s * 0.04,
+                  base_y - s * 0.465], fill=_fc)
+    draw.ellipse([cx + s * 0.04, base_y - s * 0.535, cx + s * 0.10,
+                  base_y - s * 0.465], fill=_fc)
+    # nose (thicker, with a small foot)
+    draw.line([cx, base_y - s * 0.50, cx, base_y - s * 0.40], fill=_fc, width=3)
+    draw.line([cx, base_y - s * 0.40, cx + s * 0.03, base_y - s * 0.40],
+              fill=_fc, width=3)
+    # mouth (smile arc)
+    draw.arc([cx - s * 0.07, base_y - s * 0.40, cx + s * 0.07,
+              base_y - s * 0.30], 15, 165, fill=_fc, width=3)
     draw.polygon([(cx - s * 0.34, base_y - s * 0.28), (cx + s * 0.34, base_y - s * 0.28),
                   (cx + s * 0.42, base_y + s * 0.28), (cx - s * 0.42, base_y + s * 0.28)],
                  fill=suit)
@@ -511,7 +518,8 @@ def hero_shenzhen(img, x0, y0, x1, y1):
         _figure(d, dcx, ty + 8, 44, (210, 180, 150), (120, 120, 120),
                 (90, 100, 120), (90, 90, 90))
     s = 74
-    _figure(d, x0 + 62, ty + 16, s, (232, 190, 150), (190, 190, 190), (24, 32, 54), RED)
+    # Trump: blond yellow hair (user order); Xi black; Putin grey
+    _figure(d, x0 + 62, ty + 16, s, (232, 190, 150), (245, 205, 95), (24, 32, 54), RED)
     _figure(d, x0 + (x1 - x0) // 2, ty + 16, s, (238, 200, 160), (30, 30, 30), (16, 24, 40), RED)
     _figure(d, x1 - 62, ty + 16, s, (232, 198, 170), (200, 200, 200), (30, 34, 48), (120, 30, 60))
     # documents on the table in front of each leader
