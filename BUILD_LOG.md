@@ -342,6 +342,22 @@ NOT submitted
   8d4986f2bdbc8dde5d6ffbeff4536564c22acf3f2a9871e1f17af56ae49c5828;
   main.py 2x identical; entry.png 1024x1024, 253,778 bytes.
 - Repo commit 74d0f92d5a8909e5e64386b6dd3ce7472d02f56b. v3 remains
+  the LIVE submitted entry.
+
+## v5 fix 6 (20 Nov 2026 ~23:55 WIB) — masthead uniform, NOT submitted
+
+- User: "warna biru di background atas samakan jadi warna di
+  background bawah supaya seragam". Fix: masthead fill NAVY
+  (8,46,150 royal blue) -> DARKBAND (9,26,54), the same dark navy
+  as the headline bands under the three heroes. Only the masthead
+  rect changed; NAVY stays for the outer border, hero outlines,
+  divider lines and mid-card badges.
+- Verification: build_entry.py 2x -> identical sha256
+  f81716b5e85062f86dbc6700cfa15ff08e21b35628aa9fae10d38d134a77428f;
+  main.py 2x identical; entry.png 1024x1024, 253,980 bytes;
+  full page read by builder — masthead now matches the hero
+  headline bands, gold kicker + white date still read well.
+- Repo commit 591feb469f37fc6df679e80dc75819e9434b8819. v3 remains
   the LIVE submitted entry. Quota for a v5 submit (if the user
   approves tonight): 1 daily entry left on 20 Nov; entries close
   21 Nov 07:00 WIB.
