@@ -661,7 +661,8 @@ def hero_anthropic(img, x0, y0, x1, y1):
     d = ImageDraw.Draw(img)
     d.rectangle([x0, y0, x1, y1], fill=DARKGREEN)
     d.rectangle([x0, y0, x1, y0 + 26], fill=(4, 44, 34))
-    d.text((x0 + 10, y0 + 6), "NASDAQ \u00b7 FIRST TRADE TODAY",
+    # header text starts clear of the red "3" badge (x0+10..x0+40)
+    d.text((x0 + 46, y0 + 6), "NASDAQ \u00b7 FIRST TRADE TODAY",
            font=font(SANS_B, 11), fill=GOLD)
     _bb = "\u25b2 +34% ON DEBUT"
     d.text((x1 - 10 - d.textlength(_bb, font=font(SANS_B, 11)), y0 + 6), _bb,
@@ -702,8 +703,8 @@ def hero_anthropic(img, x0, y0, x1, y1):
                (pts[-1][0] + 14, pts[-1][1] - 6)], fill=GOLD)
     tf = font(SANS_B, 34)
     d.text((x0 + 12, y0 + 34), "ANT", font=tf, fill=(255, 255, 255))
-    pf = font(SANS_B, 30)
-    d.text((x1 - 12 - d.textlength("$83", font=pf), y0 + 36), "$83",
+    pf = font(SANS_B, 32)
+    d.text((x1 - 12 - d.textlength("$83", font=pf), y0 + 30), "$83",
            font=pf, fill=GOLD)
     # ticker tape at the bottom of the board (valuation moved here so the
     # chart never crosses it; first trade $111.50 = +34% on the $83 price)
