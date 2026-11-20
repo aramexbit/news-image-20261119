@@ -309,6 +309,39 @@
   zoomed hero-3 crop read by builder — $83 big and clear, header
   reads "NASDAQ · FIRST TRADE TODAY ▲ +34% ON DEBUT".
 - Repo commit 5561b10225da5c89ba1558c79fac8623d5fc75d6. v3 remains
+  the LIVE submitted entry.
+
+## v5 fix 4 (20 Nov 2026 ~23:25 WIB) — $83 white, NOT submitted
+
+- User: "$83 warnanya sama dengan bendera jadi tidak kelihatan".
+  Fix: $83 fill GOLD -> white (255,255,255) — the gold blended
+  into the gold trend line/candles; white pops on dark green.
+  Trump's hair pale gold (245,205,95) -> vivid yellow (255,205,0)
+  so it reads as "kuning" at small scale. (This build was
+  interrupted before the reply was sent; its changes ride in fix 5.)
+- Verification: build_entry.py 2x -> identical sha256
+  2cd691e5c1a1f749132bff6cbf2458fa252656e2052c084ec8be3891a42f3234;
+  main.py 2x identical; entry.png 1024x1024, 253,319 bytes.
+
+## v5 fix 5 (20 Nov 2026 ~23:35 WIB) — big heads in the FULL image,
+NOT submitted
+
+- User: "kamu buat zoom tapi di gambar lengkapnya belum kamu ubah"
+  + "mata, mulut dan hidungnya tidak ada". They were right: the
+  zoom crops showed the faces, but at full-page scale the hs=100
+  heads were still ~16px and the features invisible. Fix: leaders'
+  heads hs=100 -> hs=150 (~48px tall), so eyes/brows/nose/mouth
+  read in the full 1024 image itself. Verified by the builder
+  reading the FULL page (not just a crop): all three faces show
+  eyebrows, white eyes with pupils, nose, smile; Trump's hair is
+  a clear bright yellow cap; $83 is white and clear.
+- Deliverables were saved under NEW filenames (entry-v5-fix5.png,
+  hero1-fix5.png) because re-attaching the same entry.png path
+  risked the chat client showing a cached old copy.
+- Verification: build_entry.py 2x -> identical sha256
+  8d4986f2bdbc8dde5d6ffbeff4536564c22acf3f2a9871e1f17af56ae49c5828;
+  main.py 2x identical; entry.png 1024x1024, 253,778 bytes.
+- Repo commit 74d0f92d5a8909e5e64386b6dd3ce7472d02f56b. v3 remains
   the LIVE submitted entry. Quota for a v5 submit (if the user
   approves tonight): 1 daily entry left on 20 Nov; entries close
   21 Nov 07:00 WIB.
