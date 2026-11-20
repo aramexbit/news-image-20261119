@@ -260,6 +260,22 @@
   the LIVE submitted entry. Quota for a v5 submit (if the user
   approves tonight): 1 daily entry left on 20 Nov; entries close
   21 Nov 07:00 WIB.
+
+## v5 fix (20 Nov 2026 ~23:05 WIB) — faces, NOT submitted
+
+- User: faces still had no eyes/eyebrows/nose (at full-page scale
+  the v5 features were ~2px and invisible) and Trump's hair must be
+  yellow. Fix: eyebrows/eyes/nose/mouth made ~40% bigger and
+  thicker (width 3), ears added, mouth changed to a smile arc;
+  Trump's hair changed grey (190,190,190) -> blond yellow
+  (245,205,95); Xi stays black, Putin stays grey.
+- Verification: build_entry.py 2x -> identical sha256
+  2610b4f332782fe59f2321c97c920926027664d3de8d5b7cae63b0e26a469c0f;
+  main.py 2x identical; entry.png 1024x1024, 252,973 bytes;
+  zoomed faces crop read by builder — all three faces clearly show
+  eyebrows, eyes, nose, smile, and Trump's blond hair.
+- Repo commit 925f1b75f20fe7a49e908f80f1052769f595632d. v3 remains
+  the LIVE submitted entry.
 - Honest gaps v2: heroes are flat cartoon-style drawings (same style
   as the top 10 — that is the point); mid-card icons are small;
   Shenzhen figures are generic (labelled TRUMP/XI/PUTIN, no likeness
