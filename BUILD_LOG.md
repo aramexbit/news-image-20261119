@@ -358,9 +358,36 @@ NOT submitted
   full page read by builder — masthead now matches the hero
   headline bands, gold kicker + white date still read well.
 - Repo commit 591feb469f37fc6df679e80dc75819e9434b8819. v3 remains
-  the LIVE submitted entry. Quota for a v5 submit (if the user
-  approves tonight): 1 daily entry left on 20 Nov; entries close
-  21 Nov 07:00 WIB.
+  the LIVE submitted entry.
+
+## v5 SUBMITTED (20 Nov 2026 23:19 WIB) — final entry
+
+- User approved ("oke submit") 20 Nov 22:53 WIB. Quota re-checked
+  before submit: can_submit true, day left 3, hard limit left 18.
+- Bundle by a separate agent (transcript gate): fresh kit
+  (tool 0.1.0+kit.29, manifest bundle_sha256 1c4dd40e… matches),
+  bundle ~/workspace/makefun/news-image-20261119-bundle-v5.tar.gz
+  (6,693,923 bytes, sha256
+  fbccd30e21b36693c77efc56ef955637fe0dfdcdb4e5580c2bb4a78ca131be25),
+  usage ~/workspace/makefun/news-image-20261119-usage-v5b.jsonl
+  (74 rows attached). Kit check: 13 passed, 0 failed, 6 skipped,
+  5 checked at submission; authored 73.0%, unwritten 6.1%,
+  main.py 3 authored lines.
+- Submit accepted HTTP 202, 20 Nov 23:19 WIB (server time
+  2026-11-20T16:19:07Z): submission
+  01a1f9c1-270c-7653-9f5f-d4d03d63fd86, claim
+  AF-TFES0-CX0V8-AWHF6-MRBVH, commit
+  1f3fd5e9a38c915d122769a5dcbd75fe5bf7d251, repo
+  github.com/aramexbit/news-image-20261119, MIT, repo created
+  2026-11-19T22:39:17Z. Verified via API: status "preparing",
+  error null, owner angling-darmo, snapshot 15 files / 1,524,970
+  bytes; scores [] (not judged yet); artifact.webp 404 while
+  preparing (expected — the site reproduces the entry first).
+- Quota after submit: day taken 1, left 2; hard limit left 17;
+  can_submit FALSE (account reputation for this slug — no more
+  submits for news-image-20261119). Entries close 21 Nov 07:00
+  WIB anyway, so v5 is the FINAL entry and replaces v3.
+  Result due ~4 Dec 2026.
 - Honest gaps v2: heroes are flat cartoon-style drawings (same style
   as the top 10 — that is the point); mid-card icons are small;
   Shenzhen figures are generic (labelled TRUMP/XI/PUTIN, no likeness
