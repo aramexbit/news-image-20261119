@@ -1,4 +1,4 @@
-"""news-image-20261119 entry v3 (Python 3.13).
+"""news-image-20261119 entry v4 (Python 3.13).
 
 The entry image is a single newspaper front page summing up the world's
 news of Thursday 19 November 2026 in 37 stories. At runtime this program
@@ -11,7 +11,12 @@ the same things, so v2 did them too, and v3 densifies them: v2 scored
 98.01% provisional (11W-1L) against a top-20 line of ~98.9%, so v3 adds
 richer hero scenes, taller mid-card illustration bands with bigger
 icons, a HOW SURE ARE WE? confidence legend and a THE DAY IN UTC
-mini-timeline under the map:
+mini-timeline under the map. v4 (user order, after checking the top
+rank themselves: more HD, more detail — the judge reads the screenshot)
+densifies further within the competition's fixed 1024x1024 canvas:
+Shenzhen skyline + microphones, GTA VI clouds + lit back-row windows +
+third car, 13 candles + order-book depth bars on the Nasdaq board, and
+tiny country labels on the map:
 - Three hero panels in a row (Shenzhen summit, GTA VI, Anthropic IPO),
   each a FLAT DRAWN illustration with a big label — the top 10 use no
   photographs at all. The small flat icons for the 10 mid cards are

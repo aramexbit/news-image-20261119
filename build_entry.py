@@ -1,7 +1,18 @@
 #!/usr/bin/env python3
-"""Build entry.png for make.fun news-image-20261119 — v3 (runs LOCALLY, not
+"""Build entry.png for make.fun news-image-20261119 — v4 (runs LOCALLY, not
 in the grader sandbox): one 1024x1024 newspaper front page summing up
 Thursday 19 November 2026 in 37 verified stories.
+
+v4 (20 Nov 22:22 WIB): v3 scored 98.29% provisional (12W-0L), rank 776
+— top 20 line ~99.07%, top 50 ~98.95%. The user checked the top rank
+themselves and ordered: more HD, more detail; the judge reads the
+screenshot, and denser screenshots score higher. Resolution is capped
+at 1024x1024 by the competition, so "HD" here means denser detail:
+Shenzhen gains a skyline behind the table + microphones; GTA VI gains
+clouds, lit windows in the back-row skyline and a third car; Anthropic
+gains 13 candles + order-book depth bars; the map gains tiny country
+labels. Same 37 stories, same facts, same layout grid. NOT submitted —
+shown to the user for judgment first.
 
 v3 (20 Nov 06:05 WIB): v2 scored 98.01% provisional (11W-1L) — top 20
 needs ~98.9%, so v3 densifies everything the judge's top 10 do that v2
@@ -421,6 +432,18 @@ def hero_shenzhen(img, x0, y0, x1, y1):
     _flag(d, x0 + (x1 - x0) // 2 - fw // 2, y0 + 22, fw, fh, "cn")
     _flag(d, x1 - 34 - fw, y0 + 22, fw, fh, "ru")
     ty = y0 + (y1 - y0) * 0.62
+    # Shenzhen skyline in the empty band between the flags and the table
+    _srng = random.Random(SEED + 13)
+    _sx = x0 + 6
+    while _sx < x1 - 10:
+        _sw = _srng.randint(14, 26)
+        _sh = _srng.randint(18, 44)
+        d.rectangle([_sx, ty - 2 - _sh, _sx + _sw, ty - 2], fill=(18, 36, 78))
+        for _wy in range(int(ty - 2 - _sh + 4), int(ty - 6), 9):
+            for _wx in range(_sx + 3, _sx + _sw - 3, 7):
+                if _srng.random() < 0.35:
+                    d.rectangle([_wx, _wy, _wx + 2, _wy + 3], fill=GOLD)
+        _sx += _sw + 3
     d.ellipse([x0 + 10, ty + 6, x1 - 10, ty + 34], fill=(122, 82, 52))
     d.rectangle([x0 + 10, ty + 20, x1 - 10, y1], fill=(96, 64, 40))
     # background delegates seated between the three leaders
@@ -437,6 +460,10 @@ def hero_shenzhen(img, x0, y0, x1, y1):
                     outline=(180, 170, 150))
         d.line([cx - 12, y1 - 48, cx + 12, y1 - 48], fill=(150, 140, 120), width=1)
         d.line([cx - 12, y1 - 44, cx + 6, y1 - 44], fill=(150, 140, 120), width=1)
+    # microphones on the table in front of each leader
+    for cx in (x0 + 62, x0 + (x1 - x0) // 2, x1 - 62):
+        d.line([cx + 16, ty + 34, cx + 16, ty + 12], fill=(20, 20, 20), width=2)
+        d.ellipse([cx + 13, ty + 9, cx + 19, ty + 15], fill=(20, 20, 20))
     for cx, name in ((x0 + 62, "TRUMP"), (x0 + (x1 - x0) // 2, "XI"),
                      (x1 - 62, "PUTIN")):
         nf = font(SANS_B, 13)
@@ -463,13 +490,21 @@ def hero_gta(img, x0, y0, x1, y1):
     # birds: three small v-strokes
     for bxx, byy in ((x0 + 96, y0 + 26), (x0 + 120, y0 + 38), (x1 - 96, y0 + 30)):
         d.line([bxx - 6, byy, bxx, byy - 4, bxx + 6, byy], fill=(40, 18, 70), width=2)
+    # clouds: soft pink puffs in the upper sky
+    for clx, cly in ((x0 + 92, y0 + 12), (x1 - 116, y0 + 18), (x0 + 150, y0 + 8)):
+        d.ellipse([clx, cly, clx + 34, cly + 10], fill=(255, 205, 225))
+        d.ellipse([clx + 8, cly - 5, clx + 30, cly + 6], fill=(255, 215, 230))
     base = y1 - 46
-    # back row of smaller, fainter buildings
+    # back row of smaller, fainter buildings, with a few lit windows
     bx = x0 + 4
     while bx < x1 - 16:
         bw = rng.randint(16, 30)
         bh = rng.randint(18, 58)
         d.rectangle([bx, base - bh, bx + bw, base], fill=(74, 42, 112))
+        for wy in range(base - bh + 5, base - 6, 11):
+            for wx in range(bx + 4, bx + bw - 4, 9):
+                if rng.random() < 0.3:
+                    d.rectangle([wx, wy, wx + 3, wy + 4], fill=(255, 220, 140))
         bx += bw + 3
     bx = x0 + 8
     while bx < x1 - 20:
@@ -484,7 +519,8 @@ def hero_gta(img, x0, y0, x1, y1):
         bx += bw + 4
     d.rectangle([x0, base, x1, y1], fill=(30, 14, 54))
     # cars on the road, headlights on
-    for carx, cary in ((x0 + 34, base + 14), (x0 + 150, base + 26)):
+    for carx, cary in ((x0 + 34, base + 14), (x0 + 150, base + 26),
+                       (x0 + 238, base + 18)):
         d.rectangle([carx, cary, carx + 30, cary + 9], fill=(16, 8, 30))
         d.rectangle([carx + 6, cary - 5, carx + 22, cary], fill=(16, 8, 30))
         d.ellipse([carx + 28, cary + 2, carx + 32, cary + 6], fill=GOLD)
@@ -524,12 +560,13 @@ def hero_anthropic(img, x0, y0, x1, y1):
             d.text((x0 + 4, gy - 5), glab, font=font(SANS, 8), fill=(120, 180, 150))
     rng = random.Random(SEED + 11)
     base = y1 - 44
-    n = 11
+    n = 13
     step = (x1 - x0 - 44) / n
     pts = []
     for i in range(n):
         cx = x0 + 34 + i * step
-        h = 10 + i * 5 + rng.randint(-3, 4)
+        # cap the rise so the trend-line arrow never pierces the $83
+        h = min(10 + i * 4 + rng.randint(-3, 4), 46)
         top = base - h
         col = (46, 204, 113) if i % 3 else (238, 18, 58)
         d.rectangle([cx - 7, top, cx + 7, base - 2], fill=col)
@@ -541,6 +578,11 @@ def hero_anthropic(img, x0, y0, x1, y1):
         vh = 4 + rng.randint(0, 10)
         vcol = (30, 140, 90) if i % 3 else (180, 40, 60)
         d.rectangle([cx - 6, base + 8, cx + 6, base + 8 + vh], fill=vcol)
+    # order-book depth bars at the far right edge (clear of the last candle)
+    for _di, _dw in enumerate((14, 10, 12, 7, 9)):
+        _dy = base - 12 - _di * 18
+        d.rectangle([x1 - 6 - _dw, _dy, x1 - 6, _dy + 8], fill=(10, 72, 56))
+        d.rectangle([x1 - 6 - _dw, _dy, x1 - 6 - _dw + 3, _dy + 8], fill=GOLD)
     d.line(pts, fill=GOLD, width=3)
     d.polygon([(pts[-1][0] - 2, pts[-1][1] - 14), (pts[-1][0] - 2, pts[-1][1] + 2),
                (pts[-1][0] + 14, pts[-1][1] - 6)], fill=GOLD)
@@ -719,6 +761,15 @@ def build():
         s = str(n)
         d.text((cx - d.textlength(s, font=bf) / 2, cy - 5), s, font=bf,
                fill=(255, 255, 255))
+    # v4: tiny country labels for extra map detail (positions chosen to
+    # stay clear of the numbered dots)
+    _lf = font(SANS, 7)
+    for _lab, _fx, _fy in (("USA", 0.02, 0.08), ("BRAZIL", 0.15, 0.62),
+                           ("UK", 0.42, 0.12), ("NIGERIA", 0.45, 0.56),
+                           ("INDIA", 0.68, 0.30), ("CHINA", 0.75, 0.18),
+                           ("JAPAN", 0.90, 0.10), ("AUS", 0.82, 0.76)):
+        d.text((mx0 + _fx * map_w, my0 + _fy * map_h), _lab, font=_lf,
+               fill=(90, 80, 60))
     d.text((map_x0, my0 + map_h + 6),
            "Red numbers mark stories 1\u201313. Positions are approximate.",
            font=font(SANS, 8), fill=GREY)

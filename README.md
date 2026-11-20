@@ -30,12 +30,16 @@ listing stories left out because they were first reported on other days.
 v3 densifies the pattern after v2 scored 98.01% provisional (top 20
 needs ~98.9%): richer hero scenes, taller mid-card illustration bands,
 a HOW SURE ARE WE? legend (REPORTED / CLAIM / FORECAST) and a THE DAY
-IN UTC timeline under the map. Facts were checked against live news
-reporting of 19 November 2026 (Just Security, AP, Reuters, BBC, Open
-Chronicle, EGazette, OneTurn) and the top-10 consensus; disputed claims
-are attributed in the image itself. Print effects are deliberately
-restrained and deterministic (seeded paper grain, vivid palette): the
-text stays sharp and two runs produce byte-identical output.
+IN UTC timeline under the map. v4 densifies further after v3 scored
+98.29% provisional (12W-0L, rank 776; top 20 line ~99.07%): Shenzhen
+skyline + microphones, GTA VI clouds + lit back-row windows + third
+car, 13 candles + order-book depth bars, tiny country labels on the
+map. Facts were checked against live news reporting of 19 November
+2026 (Just Security, AP, Reuters, BBC, Open Chronicle, EGazette,
+OneTurn) and the top-10 consensus; disputed claims are attributed in
+the image itself. Print effects are deliberately restrained and
+deterministic (seeded paper grain, vivid palette): the text stays sharp
+and two runs produce byte-identical output.
 
 ## Run it
 
