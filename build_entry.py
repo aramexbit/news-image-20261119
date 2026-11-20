@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Build entry.png for make.fun news-image-20261119 — v4 (runs LOCALLY, not
+"""Build entry.png for make.fun news-image-20261119 — v5 (runs LOCALLY, not
 in the grader sandbox): one 1024x1024 newspaper front page summing up
-Thursday 19 November 2026 in 37 verified stories.
+Thursday 19 November 2026 in 43 verified stories.
 
 v4 (20 Nov 22:22 WIB): v3 scored 98.29% provisional (12W-0L), rank 776
 — top 20 line ~99.07%, top 50 ~98.95%. The user checked the top rank
@@ -13,6 +13,20 @@ clouds, lit windows in the back-row skyline and a third car; Anthropic
 gains 13 candles + order-book depth bars; the map gains tiny country
 labels. Same 37 stories, same facts, same layout grid. NOT submitted —
 shown to the user for judgment first.
+
+v5 (20 Nov 22:28–22:45 WIB): the user checked the top rank and said v4
+looked no different from v3, then sent a very detailed example entry
+and ordered faces on the presidents (eyes, mouth, nose). Resolution is
+capped at 1024x1024 by the competition, so "HD" here means far denser
+detail: 43 stories (6 mined from the live top 3), 30 briefs in 15
+tight rows, a 7th numbers cell, drawn faces on all three leaders (and
+the background delegates), Shenzhen banners + screen + glasses +
+flowers, GTA VI third skyline row + moon + helicopter + street lamps +
+5 cars, 16 candles + "+34% ON DEBUT" badge on the Nasdaq board,
+9-6 / CUT / 109-0 badges on three mid cards, and a lat/long grid +
+compass on the map. The example's unverified market numbers (Dow,
+S&P, Nasdaq, Brent, Gold closes) were NOT copied — no independent
+source for them. NOT submitted — shown to the user for judgment first.
 
 v3 (20 Nov 06:05 WIB): v2 scored 98.01% provisional (11W-1L) — top 20
 needs ~98.9%, so v3 densifies everything the judge's top 10 do that v2
@@ -143,22 +157,23 @@ def vgrad(img, box, top, bottom):
 # Numbers strip: (big figure, caption).
 NUMBERS = [
     ("3", "presidents at one table"),
-    ("$81.3bn", "raised by Anthropic, a record IPO"),
+    ("$81.3bn", "record IPO by Anthropic"),
     ("15.9m", "GTA VI pre-orders banked"),
     ("551,864", "sit Korea's Suneung exam"),
     ("200,000", "evacuated ahead of Akvan"),
     ("109\u20130", "Danish vote on Arctic pact"),
+    ("11,000", "migrants in 15 days"),
 ]
 
 # Region tabs: (label, count, colour).
 REGIONS = [
-    ("ASIA-PACIFIC", 6, ORANGE),
+    ("ASIA-PACIFIC", 8, ORANGE),
     ("EUROPE", 12, BLUE),
     ("MIDDLE EAST", 4, RUST),
-    ("AFRICA", 4, GREEN),
-    ("AMERICAS", 4, PURPLE),
+    ("AFRICA", 6, GREEN),
+    ("AMERICAS", 5, PURPLE),
     ("OCEANIA", 5, TEAL),
-    ("GLOBAL", 2, SLATE),
+    ("GLOBAL", 3, SLATE),
 ]
 
 # Mid cards 4-13: (number, region, topic, colour, icon, headline, deck,
@@ -213,7 +228,13 @@ FEATURED = [
      "AP", 0.24, 0.06),
 ]
 
-# Briefs: stories 14-37, (number, place, text, source).
+# Briefs: stories 14-43, (number, place, text, source).
+# 38-43 (v5) mined from the live top 3 entries (20 Nov 22:29 WIB):
+# 38 Jepchirchir ban in all three top entries (AP/ABC); 39 Han ruling
+# in ranks 1+3 (AP); 40 Senegal boat in ranks 2+3 (Reuters); 41 pulsar
+# in rank 1's numbers + rank 3's briefs (NASA); 42 Korea $1tn exports
+# featured in rank 3 (Reuters); 43 Atacama bloom featured in rank 3
+# (NASA).
 BRIEFS = [
     (14, "GAZA", "Israeli tanks raid past truce line", "BBC"),
     (15, "CRIMEA", "Bridge attacked again; traffic halted", "Euronews"),
@@ -239,6 +260,12 @@ BRIEFS = [
     (35, "PNG", "Rio Tinto pays $250m over mine damage", "Reuters"),
     (36, "WASHINGTON", "Trump: \u201csee what happens\u201d on Iran after Jan 1", "AP"),
     (37, "LONDON", "National Grid debunks viral AI blackout hoax", "Reuters"),
+    (38, "NAIROBI", "Marathon champion Jepchirchir gets 3-year doping ban", "AP"),
+    (39, "SEOUL", "Top court overturns ex-PM Han's martial-law conviction", "AP"),
+    (40, "SENEGAL", "Dozens missing after migrant boat capsizes", "Reuters"),
+    (41, "SPACE", "NASA reports faster way to find pulsars", "NASA"),
+    (42, "SEOUL", "Exports pass $1 trillion, aided by AI chips", "Reuters"),
+    (43, "CHILE", "NASA reports Atacama desert bloom", "NASA"),
 ]
 
 DATE_CHECK = (
@@ -403,11 +430,28 @@ def _flag(draw, x, y, w, h, kind):
 
 
 def _figure(draw, cx, base_y, s, skin, hair, suit, tie):
-    """Seated leader: head, hair, suit torso, tie. Flat cartoon style."""
+    """Seated leader: head, hair, suit torso, tie — with a drawn face
+    (v5, user order: eyes, mouth, nose). Flat cartoon style."""
     draw.ellipse([cx - s * 0.16, base_y - s * 0.62, cx + s * 0.16, base_y - s * 0.30],
                  fill=skin)
     draw.pieslice([cx - s * 0.16, base_y - s * 0.64, cx + s * 0.16, base_y - s * 0.34],
                   180, 360, fill=hair)
+    _fc = (40, 30, 25)
+    # eyebrows
+    draw.line([cx - s * 0.10, base_y - s * 0.55, cx - s * 0.03, base_y - s * 0.55],
+              fill=_fc, width=2)
+    draw.line([cx + s * 0.03, base_y - s * 0.55, cx + s * 0.10, base_y - s * 0.55],
+              fill=_fc, width=2)
+    # eyes
+    draw.ellipse([cx - s * 0.085, base_y - s * 0.52, cx - s * 0.045,
+                  base_y - s * 0.48], fill=_fc)
+    draw.ellipse([cx + s * 0.045, base_y - s * 0.52, cx + s * 0.085,
+                  base_y - s * 0.48], fill=_fc)
+    # nose
+    draw.line([cx, base_y - s * 0.50, cx, base_y - s * 0.42], fill=_fc, width=2)
+    # mouth
+    draw.line([cx - s * 0.05, base_y - s * 0.36, cx + s * 0.05,
+               base_y - s * 0.36], fill=_fc, width=2)
     draw.polygon([(cx - s * 0.34, base_y - s * 0.28), (cx + s * 0.34, base_y - s * 0.28),
                   (cx + s * 0.42, base_y + s * 0.28), (cx - s * 0.42, base_y + s * 0.28)],
                  fill=suit)
@@ -444,6 +488,22 @@ def hero_shenzhen(img, x0, y0, x1, y1):
                 if _srng.random() < 0.35:
                     d.rectangle([_wx, _wy, _wx + 2, _wy + 3], fill=GOLD)
         _sx += _sw + 3
+    # APEC banners at both ends of the hall
+    for _bx0 in (x0 + 6, x1 - 30):
+        d.rectangle([_bx0, y0 + 58, _bx0 + 24, y0 + 104], fill=(120, 30, 60),
+                    outline=GOLD)
+        _af = font(SANS_B, 8)
+        d.text((_bx0 + 12 - d.textlength("APEC", font=_af) / 2, y0 + 76),
+               "APEC", font=_af, fill=(255, 255, 255))
+    # big screen behind the leaders: tiny world map (no text — the
+    # centre leader's head covers the middle of the screen)
+    _scx0 = x0 + (x1 - x0) // 2 - 34
+    d.rectangle([_scx0, y0 + 58, _scx0 + 68, y0 + 100], fill=(10, 20, 40),
+                outline=GOLD)
+    for _ex, _ey, _ew, _eh in ((6, 8, 12, 7), (26, 14, 14, 8), (48, 10, 10, 6),
+                               (34, 24, 8, 5)):
+        d.ellipse([_scx0 + _ex, y0 + 58 + _ey,
+                   _scx0 + _ex + _ew, y0 + 58 + _ey + _eh], fill=GOLD)
     d.ellipse([x0 + 10, ty + 6, x1 - 10, ty + 34], fill=(122, 82, 52))
     d.rectangle([x0 + 10, ty + 20, x1 - 10, y1], fill=(96, 64, 40))
     # background delegates seated between the three leaders
@@ -460,6 +520,17 @@ def hero_shenzhen(img, x0, y0, x1, y1):
                     outline=(180, 170, 150))
         d.line([cx - 12, y1 - 48, cx + 12, y1 - 48], fill=(150, 140, 120), width=1)
         d.line([cx - 12, y1 - 44, cx + 6, y1 - 44], fill=(150, 140, 120), width=1)
+    # water glasses on the table, left of each leader's papers
+    for cx in (x0 + 62, x0 + (x1 - x0) // 2, x1 - 62):
+        d.rectangle([cx - 27, y1 - 60, cx - 20, y1 - 49], fill=(200, 220, 235),
+                    outline=(150, 170, 190))
+        d.line([cx - 27, y1 - 60, cx - 20, y1 - 60], fill=(90, 140, 190), width=2)
+    # pink flower clusters at both ends of the table (as in the example)
+    for _fx in (x0 + 20, x1 - 26):
+        d.line([_fx, y1 - 48, _fx, y1 - 58], fill=(40, 120, 60), width=2)
+        for _dx, _dy in ((-4, -2), (0, -5), (4, -2)):
+            d.ellipse([_fx + _dx - 3, y1 - 58 + _dy - 3, _fx + _dx + 3,
+                       y1 - 58 + _dy + 3], fill=(255, 150, 190))
     # microphones on the table in front of each leader
     for cx in (x0 + 62, x0 + (x1 - x0) // 2, x1 - 62):
         d.line([cx + 16, ty + 34, cx + 16, ty + 12], fill=(20, 20, 20), width=2)
@@ -494,7 +565,22 @@ def hero_gta(img, x0, y0, x1, y1):
     for clx, cly in ((x0 + 92, y0 + 12), (x1 - 116, y0 + 18), (x0 + 150, y0 + 8)):
         d.ellipse([clx, cly, clx + 34, cly + 10], fill=(255, 205, 225))
         d.ellipse([clx + 8, cly - 5, clx + 30, cly + 6], fill=(255, 215, 230))
+    # rising moon, top right
+    d.ellipse([x1 - 78, y0 + 14, x1 - 58, y0 + 34], fill=(255, 245, 210))
+    d.ellipse([x1 - 72, y0 + 20, x1 - 69, y0 + 23], fill=(230, 220, 190))
+    d.ellipse([x1 - 66, y0 + 25, x1 - 64, y0 + 27], fill=(230, 220, 190))
+    # helicopter silhouette, right of the VI badge
+    d.ellipse([x0 + 210, y0 + 20, x0 + 228, y0 + 27], fill=(20, 10, 40))
+    d.line([x0 + 210, y0 + 23, x0 + 198, y0 + 20], fill=(20, 10, 40), width=2)
+    d.line([x0 + 206, y0 + 18, x0 + 232, y0 + 18], fill=(20, 10, 40), width=2)
     base = y1 - 46
+    # far row of smallest, faintest buildings
+    bx = x0 + 2
+    while bx < x1 - 12:
+        bw = rng.randint(12, 24)
+        bh = rng.randint(10, 34)
+        d.rectangle([bx, base - bh, bx + bw, base], fill=(92, 58, 130))
+        bx += bw + 2
     # back row of smaller, fainter buildings, with a few lit windows
     bx = x0 + 4
     while bx < x1 - 16:
@@ -520,11 +606,16 @@ def hero_gta(img, x0, y0, x1, y1):
     d.rectangle([x0, base, x1, y1], fill=(30, 14, 54))
     # cars on the road, headlights on
     for carx, cary in ((x0 + 34, base + 14), (x0 + 150, base + 26),
-                       (x0 + 238, base + 18)):
+                       (x0 + 238, base + 18), (x0 + 100, base + 30),
+                       (x0 + 290, base + 12)):
         d.rectangle([carx, cary, carx + 30, cary + 9], fill=(16, 8, 30))
         d.rectangle([carx + 6, cary - 5, carx + 22, cary], fill=(16, 8, 30))
         d.ellipse([carx + 28, cary + 2, carx + 32, cary + 6], fill=GOLD)
         d.ellipse([carx + 28, cary + 5, carx + 32, cary + 9], fill=(255, 120, 120))
+    # street lamps along the road
+    for lx in (x0 + 84, x0 + 184, x0 + 284):
+        d.line([lx, base + 22, lx, base + 2], fill=(20, 10, 40), width=2)
+        d.ellipse([lx - 3, base - 3, lx + 3, base + 3], fill=(255, 220, 100))
     for px in (x0 + 26, x1 - 26):
         d.line([px, base, px, base - 44], fill=(20, 10, 40), width=4)
         for a, dx, dy in ((200, -16, -8), (250, -6, -16), (290, 6, -16), (340, 16, -8)):
@@ -552,6 +643,9 @@ def hero_anthropic(img, x0, y0, x1, y1):
     d.rectangle([x0, y0, x1, y0 + 26], fill=(4, 44, 34))
     d.text((x0 + 10, y0 + 6), "NASDAQ \u00b7 FIRST TRADE TODAY",
            font=font(SANS_B, 11), fill=GOLD)
+    _bb = "\u25b2 +34% ON DEBUT"
+    d.text((x1 - 10 - d.textlength(_bb, font=font(SANS_B, 11)), y0 + 6), _bb,
+           font=font(SANS_B, 11), fill=GOLD)
     # faint horizontal grid + price axis on the left ($100 label dropped:
     # its row sits behind the ANT headline, the line alone reads fine)
     for gy, glab in ((y0 + 60, None), (y0 + 100, "$80"), (y0 + 140, "$60")):
@@ -560,13 +654,13 @@ def hero_anthropic(img, x0, y0, x1, y1):
             d.text((x0 + 4, gy - 5), glab, font=font(SANS, 8), fill=(120, 180, 150))
     rng = random.Random(SEED + 11)
     base = y1 - 44
-    n = 13
+    n = 16
     step = (x1 - x0 - 44) / n
     pts = []
     for i in range(n):
         cx = x0 + 34 + i * step
         # cap the rise so the trend-line arrow never pierces the $83
-        h = min(10 + i * 4 + rng.randint(-3, 4), 46)
+        h = min(10 + i * 3 + rng.randint(-3, 4), 46)
         top = base - h
         col = (46, 204, 113) if i % 3 else (238, 18, 58)
         d.rectangle([cx - 7, top, cx + 7, base - 2], fill=col)
@@ -640,7 +734,7 @@ def build():
     # ---- masthead ------------------------------------------------------
     d.rectangle([0, 0, W, 96], fill=NAVY)
     d.text((M, 8), "THE WORLD IN ONE DAY", font=font(SANS_B, 13), fill=GOLD)
-    d.text((W - M - 400, 8), "37 STORIES  \u00b7  7 REGIONS  \u00b7  ALL FROM THIS ONE DAY",
+    d.text((W - M - 400, 8), "43 STORIES  \u00b7  7 REGIONS  \u00b7  ALL FROM THIS ONE DAY",
            font=font(SANS_B, 13), fill=GOLD)
     date_f = font(DJ_SERIF_B, 44)
     date_t = "Thursday 19 November 2026"
@@ -730,6 +824,24 @@ def build():
         # deck back to 3 lines so the source attribution survives)
         d.rectangle([x0 + 1, y0 + 1, x0 + cw - 1, y0 + 32], fill=PAPER2)
         icon(d, kind, x0 + cw // 2 - 16, y0 + 1, 30, col, RED)
+        # v5: verified badges/stamps on three cards (as the top entries do)
+        if n == 4:  # ICJ verdict 9-6
+            d.ellipse([x0 + cw - 27, y0 + 7, x0 + cw - 5, y0 + 29], fill=RED,
+                      outline=(255, 255, 255))
+            _bf = font(SANS_B, 9)
+            d.text((x0 + cw - 16 - d.textlength("9\u20136", font=_bf) / 2, y0 + 12),
+                   "9\u20136", font=_bf, fill=(255, 255, 255))
+        elif n == 5:  # COP31 aid goal CUT
+            d.rectangle([x0 + cw - 46, y0 + 8, x0 + cw - 8, y0 + 26],
+                        outline=RED, width=2)
+            _bf = font(SANS_B, 10)
+            d.text((x0 + cw - 27 - d.textlength("CUT", font=_bf) / 2, y0 + 11),
+                   "CUT", font=_bf, fill=RED)
+        elif n == 13:  # Greenland vote 109-0
+            d.rectangle([x0 + cw - 56, y0 + 8, x0 + cw - 8, y0 + 26], fill=NAVY)
+            _bf = font(SANS_B, 9)
+            d.text((x0 + cw - 32 - d.textlength("109\u20130", font=_bf) / 2, y0 + 11),
+                   "109\u20130", font=_bf, fill=(255, 255, 255))
         d.rectangle([x0, y0 + 32, x0 + cw, y0 + 34], fill=col)
         kf = font(SANS_B, 8)
         d.text((x0 + 6, y0 + 38), f"{region} \u00b7 {topic}", font=kf, fill=col)
@@ -750,6 +862,13 @@ def build():
     mx0, my0 = map_x0, map_y0 + 32
     d.rectangle([mx0, my0, mx0 + map_w, my0 + map_h], fill=(222, 232, 240),
                 outline=(150, 140, 120))
+    # v5: faint lat/long grid for cartographic detail
+    for _gx in (0.25, 0.5, 0.75):
+        d.line([mx0 + _gx * map_w, my0, mx0 + _gx * map_w, my0 + map_h],
+               fill=(180, 190, 200), width=1)
+    for _gy in (0.33, 0.66):
+        d.line([mx0, my0 + _gy * map_h, mx0 + map_w, my0 + _gy * map_h],
+               fill=(180, 190, 200), width=1)
     for poly in CONTINENTS:
         pts = [(mx0 + fx * map_w, my0 + fy * map_h) for fx, fy in poly]
         d.polygon(pts, fill=(216, 200, 158), outline=(150, 130, 100))
@@ -770,6 +889,13 @@ def build():
                            ("JAPAN", 0.90, 0.10), ("AUS", 0.82, 0.76)):
         d.text((mx0 + _fx * map_w, my0 + _fy * map_h), _lab, font=_lf,
                fill=(90, 80, 60))
+    # v5: compass rose, bottom-right corner (clear of dot 11 and AUS)
+    _ccx, _ccy = mx0 + map_w - 14, my0 + map_h - 14
+    d.ellipse([_ccx - 9, _ccy - 9, _ccx + 9, _ccy + 9], fill=(255, 255, 255),
+              outline=(150, 140, 120))
+    _cf = font(SANS_B, 8)
+    d.text((_ccx - d.textlength("N", font=_cf) / 2, _ccy - 5), "N", font=_cf,
+           fill=INK)
     d.text((map_x0, my0 + map_h + 6),
            "Red numbers mark stories 1\u201313. Positions are approximate.",
            font=font(SANS, 8), fill=GREY)
@@ -794,16 +920,16 @@ def build():
         d.text((map_x0 + 38, yy), ev, font=font(SERIF, 9), fill=INK)
     # briefs
     bx0 = map_x0 + map_w + 16
-    d.text((bx0, map_y0), "ALSO ON THURSDAY 19 NOVEMBER \u2014 24 MORE STORIES",
+    d.text((bx0, map_y0), "ALSO ON THURSDAY 19 NOVEMBER \u2014 30 MORE STORIES",
            font=font(SANS_B, 12), fill=INK)
-    nf = font(SANS_B, 9)
-    pf = font(SANS_B, 9)
-    bf = font(SERIF, 9)
-    sf = font(SERIF_I, 9)
+    nf = font(SANS_B, 8)
+    pf = font(SANS_B, 8)
+    bf = font(SERIF, 8)
+    sf = font(SERIF_I, 8)
     for i, (n, place, txt, src) in enumerate(BRIEFS):
-        col, row = divmod(i, 12)
+        col, row = divmod(i, 15)
         x = bx0 + col * 346
-        y = map_y0 + 20 + row * 19
+        y = map_y0 + 20 + row * 15
         d.text((x, y), f"{n}.", font=nf, fill=RED)
         px = x + 20
         d.text((px, y), place, font=pf, fill=INK)

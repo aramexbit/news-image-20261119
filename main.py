@@ -1,7 +1,7 @@
-"""news-image-20261119 entry v4 (Python 3.13).
+"""news-image-20261119 entry v5 (Python 3.13).
 
 The entry image is a single newspaper front page summing up the world's
-news of Thursday 19 November 2026 in 37 stories. At runtime this program
+news of Thursday 19 November 2026 in 43 stories. At runtime this program
 COMPOSES it from hardcoded text/data — no network, no randomness, no
 timestamps in the output: two runs produce identical bytes.
 

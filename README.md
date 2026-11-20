@@ -34,12 +34,20 @@ IN UTC timeline under the map. v4 densifies further after v3 scored
 98.29% provisional (12W-0L, rank 776; top 20 line ~99.07%): Shenzhen
 skyline + microphones, GTA VI clouds + lit back-row windows + third
 car, 13 candles + order-book depth bars, tiny country labels on the
-map. Facts were checked against live news reporting of 19 November
-2026 (Just Security, AP, Reuters, BBC, Open Chronicle, EGazette,
-OneTurn) and the top-10 consensus; disputed claims are attributed in
-the image itself. Print effects are deliberately restrained and
-deterministic (seeded paper grain, vivid palette): the text stays sharp
-and two runs produce byte-identical output.
+map. v5 (user order, after checking the top rank: v4 looked no
+different from v3; plus a very detailed example entry they sent) goes
+much further within the same fixed 1024x1024 canvas: 43 stories (6
+mined from the live top 3), 30 briefs in 15 tight rows, a 7th numbers
+cell, drawn faces on the three leaders (eyes, mouth, nose), Shenzhen
+banners + screen + glasses + flowers, GTA VI third skyline row + moon
++ helicopter + street lamps + 5 cars, 16 candles + "+34% ON DEBUT"
+badge, 9-6 / CUT / 109-0 badges on three mid cards, lat/long grid +
+compass on the map. Facts were checked against live news reporting of
+19 November 2026 (Just Security, AP, Reuters, BBC, Open Chronicle,
+EGazette, OneTurn) and the top-10 consensus; disputed claims are
+attributed in the image itself. Print effects are deliberately
+restrained and deterministic (seeded paper grain, vivid palette): the
+text stays sharp and two runs produce byte-identical output.
 
 ## Run it
 
