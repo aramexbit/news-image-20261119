@@ -429,36 +429,47 @@ def _flag(draw, x, y, w, h, kind):
         draw.rectangle([x, y + 2 * h / 3, x + w, y + h], fill=(213, 0, 0))
 
 
-def _figure(draw, cx, base_y, s, skin, hair, suit, tie):
-    """Seated leader: head, hair, suit torso, tie — with a drawn face
-    (v5, user order: eyes, mouth, nose). Flat cartoon style."""
-    draw.ellipse([cx - s * 0.16, base_y - s * 0.62, cx + s * 0.16, base_y - s * 0.30],
-                 fill=skin)
-    draw.pieslice([cx - s * 0.16, base_y - s * 0.64, cx + s * 0.16, base_y - s * 0.34],
+def _figure(draw, cx, base_y, s, skin, hair, suit, tie, hs=None):
+    """Seated leader: BIG head (hs, default s) with a drawn face, suit
+    torso (s). v5 fix: the heads were only ~24px, so the face was
+    invisible at full-page scale — the leaders now get hs=100 heads
+    (~32px) with white eyes + pupils, so eyes/brows/nose/mouth read
+    even in the small preview. The chin sits at the torso top so head
+    and body join."""
+    if hs is None:
+        hs = s
+    chin = base_y - s * 0.30
+    top = chin - hs * 0.32
+    hw = hs * 0.16
+    cy = (top + chin) / 2
+    draw.ellipse([cx - hw, top, cx + hw, chin], fill=skin)
+    draw.pieslice([cx - hw, top - hs * 0.02, cx + hw, chin - hs * 0.10],
                   180, 360, fill=hair)
     _fc = (40, 30, 25)
     # ears
-    draw.ellipse([cx - s * 0.19, base_y - s * 0.49, cx - s * 0.13,
-                  base_y - s * 0.43], fill=skin)
-    draw.ellipse([cx + s * 0.13, base_y - s * 0.49, cx + s * 0.19,
-                  base_y - s * 0.43], fill=skin)
-    # eyebrows (thicker and longer, so they read at full-page scale)
-    draw.line([cx - s * 0.11, base_y - s * 0.56, cx - s * 0.02, base_y - s * 0.56],
+    draw.ellipse([cx - hw - hs * 0.03, cy - hs * 0.03, cx - hw + hs * 0.02,
+                  cy + hs * 0.03], fill=skin)
+    draw.ellipse([cx + hw - hs * 0.02, cy - hs * 0.03, cx + hw + hs * 0.03,
+                  cy + hs * 0.03], fill=skin)
+    # eyebrows, just below the hairline
+    draw.line([cx - hs * 0.11, cy - hs * 0.03, cx - hs * 0.02, cy - hs * 0.03],
               fill=_fc, width=3)
-    draw.line([cx + s * 0.02, base_y - s * 0.56, cx + s * 0.11, base_y - s * 0.56],
+    draw.line([cx + hs * 0.02, cy - hs * 0.03, cx + hs * 0.11, cy - hs * 0.03],
               fill=_fc, width=3)
-    # eyes (bigger dark dots)
-    draw.ellipse([cx - s * 0.10, base_y - s * 0.535, cx - s * 0.04,
-                  base_y - s * 0.465], fill=_fc)
-    draw.ellipse([cx + s * 0.04, base_y - s * 0.535, cx + s * 0.10,
-                  base_y - s * 0.465], fill=_fc)
-    # nose (thicker, with a small foot)
-    draw.line([cx, base_y - s * 0.50, cx, base_y - s * 0.40], fill=_fc, width=3)
-    draw.line([cx, base_y - s * 0.40, cx + s * 0.03, base_y - s * 0.40],
+    # eyes: white with a dark pupil
+    for _ex in (-hs * 0.07, hs * 0.07):
+        draw.ellipse([cx + _ex - hs * 0.035, cy - hs * 0.015,
+                      cx + _ex + hs * 0.035, cy + hs * 0.055],
+                     fill=(255, 255, 255))
+        draw.ellipse([cx + _ex - hs * 0.018, cy + hs * 0.005,
+                      cx + _ex + hs * 0.018, cy + hs * 0.04], fill=_fc)
+    # nose, with a small foot
+    draw.line([cx, cy + hs * 0.04, cx, cy + hs * 0.11], fill=_fc, width=3)
+    draw.line([cx, cy + hs * 0.11, cx + hs * 0.03, cy + hs * 0.11],
               fill=_fc, width=3)
-    # mouth (smile arc)
-    draw.arc([cx - s * 0.07, base_y - s * 0.40, cx + s * 0.07,
-              base_y - s * 0.30], 15, 165, fill=_fc, width=3)
+    # mouth (smile arc, stays above the chin)
+    draw.arc([cx - hs * 0.07, cy + hs * 0.09, cx + hs * 0.07,
+              cy + hs * 0.155], 15, 165, fill=_fc, width=3)
     draw.polygon([(cx - s * 0.34, base_y - s * 0.28), (cx + s * 0.34, base_y - s * 0.28),
                   (cx + s * 0.42, base_y + s * 0.28), (cx - s * 0.42, base_y + s * 0.28)],
                  fill=suit)
@@ -502,13 +513,13 @@ def hero_shenzhen(img, x0, y0, x1, y1):
         _af = font(SANS_B, 8)
         d.text((_bx0 + 12 - d.textlength("APEC", font=_af) / 2, y0 + 76),
                "APEC", font=_af, fill=(255, 255, 255))
-    # big screen behind the leaders: tiny world map (no text — the
-    # centre leader's head covers the middle of the screen)
+    # big screen behind the leaders: tiny world map (blobs in the
+    # corners, clear of the centre leader's bigger head)
     _scx0 = x0 + (x1 - x0) // 2 - 34
     d.rectangle([_scx0, y0 + 58, _scx0 + 68, y0 + 100], fill=(10, 20, 40),
                 outline=GOLD)
-    for _ex, _ey, _ew, _eh in ((6, 8, 12, 7), (26, 14, 14, 8), (48, 10, 10, 6),
-                               (34, 24, 8, 5)):
+    for _ex, _ey, _ew, _eh in ((5, 8, 10, 6), (53, 8, 10, 6),
+                               (5, 28, 10, 6), (53, 28, 10, 6)):
         d.ellipse([_scx0 + _ex, y0 + 58 + _ey,
                    _scx0 + _ex + _ew, y0 + 58 + _ey + _eh], fill=GOLD)
     d.ellipse([x0 + 10, ty + 6, x1 - 10, ty + 34], fill=(122, 82, 52))
@@ -518,10 +529,11 @@ def hero_shenzhen(img, x0, y0, x1, y1):
         _figure(d, dcx, ty + 8, 44, (210, 180, 150), (120, 120, 120),
                 (90, 100, 120), (90, 90, 90))
     s = 74
-    # Trump: blond yellow hair (user order); Xi black; Putin grey
-    _figure(d, x0 + 62, ty + 16, s, (232, 190, 150), (245, 205, 95), (24, 32, 54), RED)
-    _figure(d, x0 + (x1 - x0) // 2, ty + 16, s, (238, 200, 160), (30, 30, 30), (16, 24, 40), RED)
-    _figure(d, x1 - 62, ty + 16, s, (232, 198, 170), (200, 200, 200), (30, 34, 48), (120, 30, 60))
+    # Trump: blond yellow hair (user order); Xi black; Putin grey.
+    # hs=100 heads so the faces read at full-page scale.
+    _figure(d, x0 + 62, ty + 16, s, (232, 190, 150), (245, 205, 95), (24, 32, 54), RED, hs=100)
+    _figure(d, x0 + (x1 - x0) // 2, ty + 16, s, (238, 200, 160), (30, 30, 30), (16, 24, 40), RED, hs=100)
+    _figure(d, x1 - 62, ty + 16, s, (232, 198, 170), (200, 200, 200), (30, 34, 48), (120, 30, 60), hs=100)
     # documents on the table in front of each leader
     for cx in (x0 + 62, x0 + (x1 - x0) // 2, x1 - 62):
         d.rectangle([cx - 16, y1 - 54, cx + 16, y1 - 38], fill=(245, 240, 225),
