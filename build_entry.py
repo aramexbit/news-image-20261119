@@ -529,11 +529,14 @@ def hero_shenzhen(img, x0, y0, x1, y1):
         _figure(d, dcx, ty + 8, 44, (210, 180, 150), (120, 120, 120),
                 (90, 100, 120), (90, 90, 90))
     s = 74
-    # Trump: blond yellow hair (user order); Xi black; Putin grey.
-    # hs=100 heads so the faces read at full-page scale.
-    _figure(d, x0 + 62, ty + 16, s, (232, 190, 150), (245, 205, 95), (24, 32, 54), RED, hs=100)
-    _figure(d, x0 + (x1 - x0) // 2, ty + 16, s, (238, 200, 160), (30, 30, 30), (16, 24, 40), RED, hs=100)
-    _figure(d, x1 - 62, ty + 16, s, (232, 198, 170), (200, 200, 200), (30, 34, 48), (120, 30, 60), hs=100)
+    # Trump: vivid blond yellow hair (user order); Xi black; Putin grey.
+    # hs=150 heads: the user is right — at full-page scale the hs=100
+    # faces were still invisible, so the heads are now ~48px tall and
+    # the eyes/brows/nose/mouth read in the full image itself, not
+    # only in a zoomed crop.
+    _figure(d, x0 + 62, ty + 16, s, (232, 190, 150), (255, 205, 0), (24, 32, 54), RED, hs=150)
+    _figure(d, x0 + (x1 - x0) // 2, ty + 16, s, (238, 200, 160), (30, 30, 30), (16, 24, 40), RED, hs=150)
+    _figure(d, x1 - 62, ty + 16, s, (232, 198, 170), (200, 200, 200), (30, 34, 48), (120, 30, 60), hs=150)
     # documents on the table in front of each leader
     for cx in (x0 + 62, x0 + (x1 - x0) // 2, x1 - 62):
         d.rectangle([cx - 16, y1 - 54, cx + 16, y1 - 38], fill=(245, 240, 225),
@@ -704,8 +707,10 @@ def hero_anthropic(img, x0, y0, x1, y1):
     tf = font(SANS_B, 34)
     d.text((x0 + 12, y0 + 34), "ANT", font=tf, fill=(255, 255, 255))
     pf = font(SANS_B, 32)
+    # white, not gold: the gold $83 blended into the gold trend line
+    # and candles around it and was unreadable (user order)
     d.text((x1 - 12 - d.textlength("$83", font=pf), y0 + 30), "$83",
-           font=pf, fill=GOLD)
+           font=pf, fill=(255, 255, 255))
     # ticker tape at the bottom of the board (valuation moved here so the
     # chart never crosses it; first trade $111.50 = +34% on the $83 price)
     d.rectangle([x0, y1 - 16, x1, y1], fill=(4, 44, 34))
