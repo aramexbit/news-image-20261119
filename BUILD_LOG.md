@@ -174,6 +174,43 @@
   content from 14 write/edit messages. Verified via API right after
   submit: status "submitting", repo_url + title correct. v3 REPLACES
   v2 as the final entry; result due ~4 Dec 2026.
+- v3 judge result (checked 20 Nov 22:18 WIB): win rate 98.29%
+  (12W-0L, 12 matches, interval 97.60–98.98%), rank 776 of 16,564
+  ranked entries. Top 20 line ~99.07% (kbara), top 50 ~98.95%
+  (fauzzz1), rank 1 hazel-harbor-63 99.23%. Entries 21,099 total.
+  Deadline 21 Nov 00:00 UTC = 07:00 WIB.
+
+## v4 (20 Nov 2026 ~22:22–22:35 WIB) — denser detail, NOT submitted
+
+- User checked the top rank themselves and ordered: more HD, more
+  detail; the judge reads the screenshot, denser screenshots score
+  higher. Resolution is capped at 1024x1024 by the competition, so
+  "HD" here = denser detail. User: "kalau sudah jangan submit dulu
+  mau saya nilai" — show first, do NOT submit.
+- v4 changes (same 37 stories, same facts, same layout grid):
+  * Shenzhen: skyline with lit windows in the band behind the table
+    + microphones in front of each leader.
+  * GTA VI: pink clouds, lit windows in the back-row skyline, third
+    car on the road.
+  * Anthropic: 13 candles (was 11) + order-book depth bars at the
+    right edge; candle rise capped at 46 px so the trend-line arrow
+    never pierces the $83 (caught on zoomed crop, fixed).
+  * Map: tiny country labels (USA, BRAZIL, UK, NIGERIA, INDIA,
+    CHINA, JAPAN, AUS), placed clear of the numbered dots.
+  * One build bug caught: skyline loop used float ty in range() —
+    fixed with int().
+- Verification v4:
+  * build_entry.py 2x -> identical sha256
+    8c8d28b5f9225b5789c18360675b2ced0cec198212651c45259945e86ba8fef9
+  * main.py 2x (MAKEFUN_OUTPUT_DIR) -> identical sha256 (same)
+  * entry.png 1024x1024, 242,937 bytes (<= 1 MiB)
+  * Visual check: full image + 4 zoomed crops read by builder; all
+    three heroes denser and legible, arrow clean of $83, map labels
+    clear of dots.
+- Repo commit 5137a5b7bb2dded0fd0b9d3574e707de8c8bbff0. v3 remains
+  the LIVE submitted entry. Quota for a v4 submit (if the user
+  approves tonight): 1 daily entry left on 20 Nov; entries close
+  21 Nov 07:00 WIB — after that, no more submits.
 - Honest gaps v2: heroes are flat cartoon-style drawings (same style
   as the top 10 — that is the point); mid-card icons are small;
   Shenzhen figures are generic (labelled TRUMP/XI/PUTIN, no likeness
