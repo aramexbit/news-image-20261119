@@ -276,6 +276,42 @@
   eyebrows, eyes, nose, smile, and Trump's blond hair.
 - Repo commit 925f1b75f20fe7a49e908f80f1052769f595632d. v3 remains
   the LIVE submitted entry.
+
+## v5 fix 2 (20 Nov 2026 ~23:10 WIB) — big heads, NOT submitted
+
+- User: faces still had no eyes/eyebrows/nose at full-page scale.
+  Root cause: the heads were only ~24px, features ~2px. Fix:
+  _figure gained an hs (head size) parameter; the three leaders
+  now get hs=100 heads (~32px) with white eyes + dark pupils, so
+  eyes/brows/nose/mouth read in the small preview; chin anchored
+  at the torso top so head and body join; screen map blobs moved
+  to the corners, clear of Xi's bigger head. Trump's hair stays
+  blond yellow, Xi black, Putin grey.
+- Verification: build_entry.py 2x -> identical sha256
+  347dd191682e004086ebedc6ead7d98fb70cc3f9f9b5bb506a969e96434037fb;
+  main.py 2x identical; entry.png 1024x1024, 253,099 bytes;
+  zoomed hero crop read by builder — faces clearly show eyebrows,
+  white eyes with pupils, nose, smile, and Trump's blond hair.
+- Repo commit 2f70d145b670c49b1845b3aeede90148e9e18578.
+
+## v5 fix 3 (20 Nov 2026 ~23:15 WIB) — $83 clearer, NOT submitted
+
+- User: "$83 kurang jelas, naikkan sedikit ke atas agar kelihatan".
+  Fix: $83 font 30 -> 32px, moved up y0+36 -> y0+30 — now clear
+  of the $100 grid line (which used to cross its lower edge) and
+  further from the trend-line arrow. While checking the crop, a
+  second defect was found and fixed in the same pass: the red "3"
+  badge covered "NA" of "NASDAQ" in the header band — the header
+  text now starts at x0+46, clear of the badge.
+- Verification: build_entry.py 2x -> identical sha256
+  108b242dccde8f99090864f587e826f87a4ba35efd106789003b81f4b38d6aff;
+  main.py 2x identical; entry.png 1024x1024, 253,193 bytes;
+  zoomed hero-3 crop read by builder — $83 big and clear, header
+  reads "NASDAQ · FIRST TRADE TODAY ▲ +34% ON DEBUT".
+- Repo commit 5561b10225da5c89ba1558c79fac8623d5fc75d6. v3 remains
+  the LIVE submitted entry. Quota for a v5 submit (if the user
+  approves tonight): 1 daily entry left on 20 Nov; entries close
+  21 Nov 07:00 WIB.
 - Honest gaps v2: heroes are flat cartoon-style drawings (same style
   as the top 10 — that is the point); mid-card icons are small;
   Shenzhen figures are generic (labelled TRUMP/XI/PUTIN, no likeness
