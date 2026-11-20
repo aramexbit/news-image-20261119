@@ -211,6 +211,55 @@
   the LIVE submitted entry. Quota for a v4 submit (if the user
   approves tonight): 1 daily entry left on 20 Nov; entries close
   21 Nov 07:00 WIB — after that, no more submits.
+
+## v5 (20 Nov 2026 ~22:28–23:00 WIB) — much denser, NOT submitted
+
+- User checked the top rank, said v4 looked no different from v3
+  ("buat sangat detail lagi dan buat menjadi HD, karena juri menilai
+  dari kesulitan"), then sent a very detailed example entry and
+  ordered faces on the presidents (eyes, mouth, nose).
+- v5 changes (same layout grid, far denser):
+  * 43 stories (was 37): 6 new briefs mined from the live top 3
+    (20 Nov 22:29 WIB) — 38 Nairobi Jepchirchir 3-year doping ban
+    (in all three top entries, AP), 39 Seoul Han ruling overturned
+    (ranks 1+3, AP), 40 Senegal boat capsized (ranks 2+3, Reuters),
+    41 NASA faster pulsar searches (rank 1 numbers + rank 3 briefs),
+    42 Korea exports pass $1tn (rank 3 featured, Reuters), 43
+    Atacama bloom (rank 3 featured, NASA). Regions now: ASIA 8,
+    EUROPE 12, MIDDLE EAST 4, AFRICA 6, AMERICAS 5, OCEANIA 5,
+    GLOBAL 3.
+  * Briefs: 30 in 15 tight rows (8px font, 15px rows), header
+    "30 MORE STORIES"; numbers strip 7 cells (added 11,000 migrants).
+  * Faces: _figure now draws eyebrows, eyes, nose, mouth on all
+    three leaders (and the two background delegates).
+  * Shenzhen: APEC banners, big screen with world map (text removed
+    — the centre leader's head covered it, caught on crop), water
+    glasses, pink flower clusters at both table ends.
+  * GTA VI: third (faintest) skyline row, rising moon, helicopter,
+    street lamps, 5 cars.
+  * Anthropic: 16 candles, "+34% ON DEBUT" badge in the header.
+  * Mid cards: 9-6 badge (ICJ), CUT stamp (COP31), 109-0 badge
+    (Greenland).
+  * Map: lat/long grid + compass rose (bottom-right, clear of dot 11
+    and AUS).
+  * Two defects caught on crops and fixed: screen text hidden behind
+    Xi's head (text removed); "$81.3bn" caption wrapped to 3 lines
+    and "IPO" clipped at the strip's bottom rule (caption shortened
+    to "record IPO by Anthropic", one line).
+  * The example's market numbers (Dow/S&P/Nasdaq/Brent/Gold closes,
+    ANT $97.17) were NOT copied — no independent source for them.
+- Verification v5:
+  * build_entry.py 2x -> identical sha256
+    1c400185c03435fd2357788f9e917b90bcd2f01cce8c75d5f7a5f645f9f280f9
+  * main.py 2x (MAKEFUN_OUTPUT_DIR) -> identical sha256 (same)
+  * entry.png 1024x1024, 252,687 bytes (<= 1 MiB)
+  * Visual check: full image + 6 zoomed crops read by builder; all
+    three heroes denser and legible, faces clear, badges clear, map
+    grid + compass clear, strip clean.
+- Repo commit 1bfef2b7b26a47ea45169d886e634b5729bf2769. v3 remains
+  the LIVE submitted entry. Quota for a v5 submit (if the user
+  approves tonight): 1 daily entry left on 20 Nov; entries close
+  21 Nov 07:00 WIB.
 - Honest gaps v2: heroes are flat cartoon-style drawings (same style
   as the top 10 — that is the point); mid-card icons are small;
   Shenzhen figures are generic (labelled TRUMP/XI/PUTIN, no likeness
