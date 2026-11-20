@@ -758,7 +758,10 @@ def build():
     M = 16  # margin
 
     # ---- masthead ------------------------------------------------------
-    d.rectangle([0, 0, W, 96], fill=NAVY)
+    # user order: the top background now uses DARKBAND, the same dark
+    # navy as the headline bands under the heroes, so the page's big
+    # dark areas are uniform (it was NAVY royal blue before)
+    d.rectangle([0, 0, W, 96], fill=DARKBAND)
     d.text((M, 8), "THE WORLD IN ONE DAY", font=font(SANS_B, 13), fill=GOLD)
     d.text((W - M - 400, 8), "43 STORIES  \u00b7  7 REGIONS  \u00b7  ALL FROM THIS ONE DAY",
            font=font(SANS_B, 13), fill=GOLD)
